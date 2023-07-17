@@ -76,7 +76,7 @@ export const ProjectOverview = () => {
           <Spacer />
 
           <OverviewBox>
-            <Button>Test Parse</Button>
+            <Button onClick={handleClick_PreviewOutput}>Test Parse</Button>
           </OverviewBox>
           <Spacer />
 
