@@ -1,23 +1,10 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { MantineProvider, Text } from "@mantine/core";
+import { ProjectOverview } from "./components/ProjectOverviewPage/ProjectOverview";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>I'm going to be something, someday.</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ❤️ React
-        </a>
-      </header>
-    </div>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <ProjectOverview />
+    </MantineProvider>
   );
 }
-
-export default App;
