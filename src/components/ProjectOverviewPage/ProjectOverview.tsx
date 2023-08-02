@@ -1,4 +1,4 @@
-import { SimpleGrid, Skeleton, Box, Button } from "@mantine/core";
+import { SimpleGrid, Skeleton, Box, Button, Flex } from "@mantine/core";
 import { StructureDescription } from "./components/StructureDescription";
 import { OverviewBox } from "../OverviewBox";
 import { Spacer } from "../Spacer";
@@ -48,41 +48,28 @@ export const ProjectOverview = () => {
   };
 
   return (
-    <Box sx={{ margin: "1rem", maxWidth: 1500, height: "100vh" }}>
-      <SimpleGrid
-        sx={{
-          height: "100%",
-        }}
-        cols={2}
-        spacing="md"
-        breakpoints={[{ maxWidth: "sm", cols: 1 }]}
+    <Flex
+      justify={"center"}
+      align={"center"}
+      direction={"column"}
+      sx={{ backgroundColor: "#ffffff", width: "100%", height: "100vh" }}
+    >
+      <Flex
+        justify={"center"}
+        align={"center"}
+        direction={"column"}
+        p={20}
+        h={"400px"}
+        sx={{ border: "1px solid #494949", borderRadius: "10px" }}
       >
-        {/* <Skeleton height={PRIMARY_COL_HEIGHT} radius="md" animate={false} /> */}
-        <OverviewBox
-          sx={{
-            height: "80%",
-            overflowY: "auto",
-            // maxHeight: "80%",
-          }}
-        >
-          <ReactJson src={main_template} />
-        </OverviewBox>
-        <Box
-          sx={{
-            height: "auto",
-          }}
-        >
-          <StructureDescription />
-          <Spacer />
-
-          <OverviewBox>
-            <Button onClick={handleClick_PreviewOutput}>Test Parse</Button>
-          </OverviewBox>
-          <Spacer />
-
-          <Skeleton height={"100px"} radius="md" animate={false} />
-        </Box>
-      </SimpleGrid>
-    </Box>
+        <Button size="md" w={"300px"} color="dark" variant="outline">
+          New Project
+        </Button>
+        <Spacer height={20} />
+        <Button size="md" w={"300px"} variant="outline" color="dark">
+          Open Existing
+        </Button>
+      </Flex>
+    </Flex>
   );
 };
