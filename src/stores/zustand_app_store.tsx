@@ -12,6 +12,8 @@ interface AppState {
   // different because someone might select a folder, then crearte project folder witin it
   set_selected_folder: (selected_folder: FileSystemDirectoryHandle) => void;
   // ---
+  selected_folder_contents: EntryType[];
+  set_selected_folder_contents: (folder_contents: EntryType[]) => void;
   project_folder: FileSystemDirectoryHandle | undefined;
   set_project_folder: (project_folder: FileSystemDirectoryHandle) => void;
   // ---
@@ -33,6 +35,10 @@ export const useAppStore = create<AppState>()(
     selected_folder: undefined,
     set_selected_folder: (selected_folder) =>
       set((_state) => ({ selected_folder })),
+    // ---
+    selected_folder_contents: [],
+    set_selected_folder_contents: (selected_folder_contents) =>
+      set((_state) => ({ selected_folder_contents })),
     // ---
     project_folder: undefined,
     set_project_folder: (project_folder) =>
