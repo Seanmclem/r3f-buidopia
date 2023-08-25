@@ -1,6 +1,5 @@
 import { Group, RingProgress, Text, createStyles, rem } from "@mantine/core";
-import { title } from "process";
-import { OverviewBox } from "../../OverviewBox";
+import { OverviewBox } from "./OverviewBox";
 
 export const StructureDescription = () => {
   const useStyles = createStyles((theme) => ({

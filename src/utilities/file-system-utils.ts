@@ -60,14 +60,14 @@ export const update_File_In_Directory = async ({
   return fileHandle;
 };
 
-export const createFileInDirectory = async ({
-  directoryHandle,
+export const create_file_in_directory = async ({
+  directory_handle,
   filename,
 }: {
-  directoryHandle: FileSystemDirectoryHandle;
+  directory_handle: FileSystemDirectoryHandle;
   filename: string;
 }) => {
-  const fileHandle = await directoryHandle.getFileHandle(filename, {
+  const fileHandle = await directory_handle.getFileHandle(filename, {
     create: true,
   });
   await writeFile({ fileHandle, contents: " " });
@@ -114,7 +114,7 @@ export const openTextFile = async () => {
 };
 
 // Verified
-export const getDirectoryContents = async ({
+export const get_directory_contents = async ({
   directoryHandle,
   sort = true,
 }: {
@@ -163,7 +163,7 @@ export const getVideoData = async (
 export const setup_opened_directory = async (
   directoryHandle: FileSystemDirectoryHandle
 ) => {
-  const contents = await getDirectoryContents({ directoryHandle });
+  const contents = await get_directory_contents({ directoryHandle });
   // setRootHandle(handle);
   console.log({ contents, directoryHandle });
 
@@ -206,7 +206,7 @@ const loop_paths = async ({
     });
   }
 
-  const next_folder_handle_contents = await getDirectoryContents({
+  const next_folder_handle_contents = await get_directory_contents({
     directoryHandle: next_folder_handle as FileSystemDirectoryHandle,
   });
 
@@ -236,3 +236,14 @@ export const traverse_folder_paths = async ({
 
   return result;
 };
+
+export const open_directory =
+  async (): Promise<FileSystemDirectoryHandle | null> => {
+    try {
+      const directoryHandle = await window.showDirectoryPicker();
+      return directoryHandle;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };

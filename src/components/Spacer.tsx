@@ -15,7 +15,7 @@ export const Spacer = ({
         ? { height, width: "100%" }
         : !height && width
         ? { width, height: "auto" }
-        : { height: 20 }
+        : { height: 20, width: 20 }
     }
   />
 );
